@@ -2,7 +2,8 @@
     "name": "STOMPed",
     "description": "STOMP client for Node.js",
     "keywords": ["STOMP","MQ", "message queue"],
-    "author": "Pierre-Yves Gerardy <py@py.gy§>",
+    "author": "Pierre-Yves Gerardy <py@py.gy>",
+    "license":"MIT",
     "version": "0.0.1",
     "repository": {
         "type": "git",
