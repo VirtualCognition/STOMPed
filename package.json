@@ -1,0 +1,21 @@
+{
+    "name": "STOMPed",
+    "description": "STOMP client for Node.js",
+    "keywords": ["STOMP","MQ", "message queue"],
+    "author": "Pierre-Yves Gerardy <py@py.gy§>",
+    "version": "0.0.1",
+    "repository": {
+        "type": "git",
+        "url": "none.atm"
+    },
+    "engines": {
+        "node": ">=0.6.10"
+    },
+    "dependencies":{
+        "colors": "*",
+        "lodash": "*",
+        "node-uuid": "1.4.0",
+        "underscoreDeepExtend": "git://github.com/pygy/undescoreDeepExtend.git"
+    },
+    "main": "index"
+}
