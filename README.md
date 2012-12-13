@@ -2,12 +2,15 @@
 
 **STOMPed** is a STOMP 1.1 client for Node.js.
 
-It is still pretty much in flux. Here are the desing goals:
+It is still pretty much in flux, and somewhat buggy. 
 
-* Full support of the STOMP 1.1 specification, including binary frames.
+Here are the desing goals:
+
+* Full support of the STOMP 1.1 specification, including binary frames, and the ability to limit the length and number of headers.
 * A minimal memory footprint.
-* An idiomatic JavaSctipt API
+* An idiomatic JavaSctipt API. Most id business (transactions, receipts, acks...) happens under the hood, but can be overridden at will.
 
+To improve: cleanup/bug fixes, better error handling (currently, the parser throws on anything illegal).
 
 ##Example:
 
@@ -24,6 +27,8 @@ var stomp = new STOMPed("stomp://example.org:6782", {/*options*/}, function (hea
 
     // Subscriptions are encapsulated in objects
     var sub = new stomp.Subscription('/queue/foo');
+
+    // This catches the sbscription messages selectively.
     sub.on('MESSAGE',function (headers,ack) {
         if (valid(headers)){
             ack(); // sends an ACK frame;
@@ -33,7 +38,7 @@ var stomp = new STOMPed("stomp://example.org:6782", {/*options*/}, function (hea
     })
     sub.cancel();
 
-    var tr = new stomp.Transaction( function(receiptHeader){
+    var tr = new stomp.Transaction( function(receiptHeaders){
         // the callback is invoked in the transaction context.
         // for example, this.id is the transaction id.
         tr.send("/queue/foo",{},"Hey ya!")
