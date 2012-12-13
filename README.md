@@ -26,12 +26,12 @@ var stomp = new STOMPed("stomp://example.org:6782", {/*options*/}, function (hea
     })
 
     // Subscriptions are encapsulated in objects
-    var sub = new stomp.Subscription('/queue/foo');
+    var sub = new stomp.Subscription('/queue/foo',{/*additional headers*/});
 
-    // This catches the sbscription messages selectively.
+    // This catches the subscription messages selectively:
     sub.on('MESSAGE',function (headers,ack) {
         if (valid(headers)){
-            ack(); // sends an ACK frame;
+            ack();      // sends an ACK frame;
         } else {
             ack(false); // NACK.
         }
