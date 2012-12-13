@@ -52,7 +52,7 @@ var stomp = new STOMPed("stomp://example.org:6782", {/*options*/}, function (hea
 You can also plug lower level event handlers:
 
 ```JavaScript
-// This will catch all MESSAGE frames.
+// This will catch all MESSAGE frames for queues without handlers.
 stomp.on('MESSAGE', function(m){
     console.log('Message: ', m)
 })
